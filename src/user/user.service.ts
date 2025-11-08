@@ -25,10 +25,7 @@ export class UserService{
     }
 
     getUserInforByPost(info : UserDTO) : object {
-        return {
-            id: info.id,
-            name: info.name
-        };
+        return info;
     }
 
     updateUserByPut(updateData : UserDTO) : object {

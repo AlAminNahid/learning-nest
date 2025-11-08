@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Query, Put, Patch, Delete, UsePipes, ValidationPipe } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, Query, Put, Patch, Delete, UsePipes, ValidationPipe, ParseIntPipe } from "@nestjs/common";
 import { UserService } from "./user.service";
 import { UserDTO } from "./user.dto";
 
@@ -7,21 +7,21 @@ export class UserController{
     constructor(private readonly userService:UserService) {}
 
     @Get('greetings')
-    // URL = http://localhost:3000/User/greetings
     getGreetings(): string{
         return this.userService.getGreetings();
     }
+    // URL = http://localhost:3000/User/greetings
 
     @Get('createByRequestParameter/:id/:name/:age/:address') 
-    // URL = http://localhost:3000/User/createByRequestParameter/22496273/AlAmin/23/Sreemongal
     getUserInfoByRequest(
-        @Param('id') id : number,
+        @Param('id', ParseIntPipe) id : number,
         @Param('name') name : string,
-        @Param('age') age : number,
+        @Param('age', ParseIntPipe) age : number,
         @Param('address') address : string
     ) : object {
         return this.userService.getUserInfoByRequest(id, name, age, address);
     }
+    // URL = http://localhost:3000/User/createByRequestParameter/22496273/AlAmin/23/Sreemongal
 
     @Get('createByQueryParameter') 
     // URL = http://localhost:3000/User/createByQueryParameter?id=1&name=AlAmin&age=24
