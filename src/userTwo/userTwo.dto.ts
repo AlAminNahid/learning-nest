@@ -1,4 +1,4 @@
-import { IsIn, IsNotEmpty, IsString, Matches, MinLength } from "class-validator";
+import { IsIn, IsNotEmpty, IsString, Matches, MaxLength, MinLength } from "class-validator";
 
 export class UserTwoDTO{
     @IsString({
@@ -28,8 +28,11 @@ export class UserTwoDTO{
     gender : string;
     
     @IsString()
-    @Matches(/^[0-9]+$/, {
-        message : "Phone Number should only contain numbers"
+    @Matches(/^01[0-9]+$/, {
+        message : "Phone Number should only contain numbers & should start with 01"
     })
-    phoneNumber : number;
+    @MaxLength(11, {
+        message : "Number should be only 11 digits"
+    })
+    phoneNumber : string;
 }
