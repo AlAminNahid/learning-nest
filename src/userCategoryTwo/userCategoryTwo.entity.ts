@@ -1,10 +1,10 @@
 import { IsOptional } from "class-validator";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, PrimaryColumn } from "typeorm";
 
 @Entity('CategoryTwo')
 export class UserCategoryTwoEntity{
-    @PrimaryGeneratedColumn({
-        type : "int"
+    @PrimaryColumn({
+        unique : true
     })
     id : number;
 
@@ -27,4 +27,9 @@ export class UserCategoryTwoEntity{
         unsigned : true
     })
     phone : number;
+
+    @BeforeInsert()
+    generateID(){
+        this.id = Math.floor(Math.random() * 1000);
+    }
 }
