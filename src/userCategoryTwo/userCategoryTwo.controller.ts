@@ -29,7 +29,7 @@ export class UserCategoryTwoController{
         @Param('id', ParseIntPipe) id : number,
         @Body() upPhone : UpdatePhoneDTO
     ) : Promise<UserCategoryTwoEntity>{
-        return this.userCategoryTwoService.updatePhone(id, upPhone.phone);
+        return this.userCategoryTwoService.updatePhone(id, upPhone.fullName);
     }
     // URL = http://localhost:3000/UserCategoryTwo/updatePhone/
 

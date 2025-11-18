@@ -22,15 +22,15 @@ export class UserCategoryTwoService{
         return this.userRepository.save(user);
     }
 
-    async updatePhone(id : number, upPhone : number) : Promise<UserCategoryTwoEntity>{
-        await this.userRepository.update(id, {phone : upPhone});
+    async updatePhone(id : number, fullName : string) : Promise<UserCategoryTwoEntity>{
+        await this.userRepository.update(id, {fullName : fullName});
         const user = await this.userRepository.findOneBy({id});
 
         if(!user){
             throw new BadRequestException(`There is no user with this ${id}`);
         }
         console.log(`Update the phone of the user of ID ${id}`);
-
+        
         return user;
     }
 

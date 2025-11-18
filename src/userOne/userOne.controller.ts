@@ -3,7 +3,6 @@ import { UserOneService } from "./userOne.service";
 import { UserOneDTO } from "./userOne.dto";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { diskStorage, MulterError } from "multer";
-
 @Controller('UserOne')
 export class UserOneController{
     constructor(private readonly userOneService: UserOneService){}
@@ -24,7 +23,7 @@ export class UserOneController{
                 cb(new MulterError('LIMIT_UNEXPECTED_FILE', 'image'), false);
             }
         },
-        limits : { fileSize : 2 * 1024 * 1024},
+        limits : { fileSize : 20 * 1024 * 1024},
         storage : diskStorage({
             destination : './uploads',
             filename : function (req, file, cb) {
@@ -37,7 +36,7 @@ export class UserOneController{
         @Body() info : UserOneDTO,
         @UploadedFile() file : Express.Multer.File,
     ) : object {
-        return this.userOneService.insertInfo(info, file);
+       return this.userOneService.insertInfo(info, file);
     }
     // URL = http://localhost:3000/UserOne/insertInfo
 

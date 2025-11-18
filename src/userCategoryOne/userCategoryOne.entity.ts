@@ -4,7 +4,8 @@ import { Column, Entity, PrimaryColumn, Unique } from "typeorm";
 export class UserCategoryOneEntity{
     @PrimaryColumn({
         type : "int",
-        unsigned : true
+        unsigned : true,
+        unique : true,
     })
     id : number;
 

@@ -6,9 +6,11 @@ import { UserThreeModule } from './userFour/userFour.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserCategoryOneModule } from './userCategoryOne/userCategoryOne.module';
 import { UserCategoryTwoModule } from './userCategoryTwo/userCategoryTwo.module';
+import { UserCategoryThreeModule } from './userCategoryThree/userCategoryThree.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [UserModule, UserOneModule, UserTwoModule, UserThreeModule, UserCategoryOneModule, UserCategoryTwoModule, TypeOrmModule.forRoot({
+  imports: [UserModule, UserOneModule, UserTwoModule, UserThreeModule ,UserCategoryOneModule, UserCategoryTwoModule, UserCategoryThreeModule, TypeOrmModule.forRoot({
     type : 'postgres',
     host : 'localhost',
     port : 5432,

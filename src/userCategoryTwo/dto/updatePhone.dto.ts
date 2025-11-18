@@ -1,6 +1,9 @@
-import { IsNumber } from "class-validator";
+import { IsNumber, IsOptional, IsString } from "class-validator";
 
 export class UpdatePhoneDTO{
-    @IsNumber()
-    phone : number;
+    @IsOptional()
+        @IsString({
+            message : "FullName can only contain string value"
+        })
+        fullName : string;
 }

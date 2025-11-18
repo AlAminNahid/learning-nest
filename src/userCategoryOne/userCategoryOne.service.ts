@@ -16,16 +16,16 @@ export class UserCategoryOneService{
     }
 
     async createUser(info : UserCategoryOneDTO) : Promise<UserCategoryOneEntity>{
-        const user = await this.userRepository.create(info);
+        const user = this.userRepository.create(info);
         console.log("UserCategoryOne is created");
 
-        return this.userRepository.save(user);
+        return await this.userRepository.save(user);
     }
 
     async getAllUsers() : Promise<UserCategoryOneEntity[]>{
         console.log("Retrived all the available user information");
 
-        return this.userRepository.find();
+        return await this.userRepository.find();
     }
 
     async updateStatus(id : number, status : string) : Promise<UserCategoryOneEntity>{
